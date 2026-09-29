@@ -300,7 +300,17 @@ This inventory records package-publisher license identifiers; it does not replac
 | leven | 3.1.0 | MIT | transitive dependency |
 | lighthouse-logger | 1.4.2 | Apache-2.0 | transitive dependency |
 | lightningcss | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-android-arm64 | 1.33.0 | MPL-2.0 | transitive dependency |
 | lightningcss-darwin-arm64 | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-darwin-x64 | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-freebsd-x64 | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-linux-arm-gnueabihf | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-linux-arm64-gnu | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-linux-arm64-musl | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-linux-x64-gnu | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-linux-x64-musl | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-win32-arm64-msvc | 1.33.0 | MPL-2.0 | transitive dependency |
+| lightningcss-win32-x64-msvc | 1.33.0 | MPL-2.0 | transitive dependency |
 | lodash.debounce | 4.0.8 | MIT | transitive dependency |
 | lodash.throttle | 4.1.1 | MIT | transitive dependency |
 | log-symbols | 2.2.0 | MIT | transitive dependency |

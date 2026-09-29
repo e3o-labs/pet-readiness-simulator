@@ -6,7 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const appRoot = path.join(root, 'app');
 const reportPath = path.join(root, 'docs', 'dependency-license-inventory.md');
 const directManifest = JSON.parse(await readFile(path.join(appRoot, 'package.json'), 'utf8'));
-const lock = JSON.parse(await readFile(path.join(appRoot, 'node_modules', '.package-lock.json'), 'utf8'));
+const lock = JSON.parse(await readFile(path.join(appRoot, 'package-lock.json'), 'utf8'));
 const directNames = new Set(Object.keys(directManifest.dependencies || {}));
 const entries = new Map();
 const missing = [];
@@ -19,16 +19,8 @@ function licenseOf(pkg) {
   return 'UNDECLARED';
 }
 
-for (const location of Object.keys(lock.packages || {}).filter((entry) => entry.startsWith('node_modules/'))) {
-  const packagePath = path.join(appRoot, location, 'package.json');
-  let pkg;
-  try {
-    pkg = JSON.parse(await readFile(packagePath, 'utf8'));
-  } catch {
-    missing.push(location + ': package metadata could not be read');
-    continue;
-  }
-  const name = pkg.name || location.split('/').at(-1);
+for (const [location, pkg] of Object.entries(lock.packages || {}).filter(([entry]) => entry.startsWith('node_modules/'))) {
+  const name = pkg.name || location.slice('node_modules/'.length).split('/node_modules/').at(-1);
   const version = pkg.version || 'unknown';
   const license = licenseOf(pkg);
   const key = name + '@' + version;
