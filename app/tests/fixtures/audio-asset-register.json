@@ -1,0 +1,30 @@
+{
+  "schema_version": "dog-first.audio-asset-register.v0",
+  "updated_at": "2026-07-12",
+  "assets": [
+    {
+      "id": "AUDIO-BARK-001",
+      "role": "short_user_initiated_dog_bark",
+      "selection_status": "selected",
+      "title": "George vuf 1996.ogg",
+      "description": "A dog bark",
+      "source_animal": "George, a labrador",
+      "author": "Broadbeer",
+      "source_page": "https://commons.wikimedia.org/wiki/File:George_vuf_1996.ogg",
+      "original_file_url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/George_vuf_1996.ogg",
+      "bundled_transcode_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/4c/George_vuf_1996.ogg/George_vuf_1996.ogg.mp3",
+      "license": "public_domain",
+      "rights_status": "public_domain_verified",
+      "rights_statement": "The copyright holder released the work into the public domain worldwide and grants use for any purpose where public-domain dedication is not legally possible.",
+      "attribution_required": false,
+      "source_attribution_preserved": true,
+      "verified_at": "2026-07-12",
+      "local_path": "app/assets/audio/dog-bark-george-public-domain.mp3",
+      "media_type": "audio/mpeg",
+      "duration_seconds": 0.391837,
+      "sha256": "699b691884c647feabf561cba932fdbad820835c6e4b1ce38f2105e60c8fabcf",
+      "model_training_allowed": false,
+      "automatic_playback_allowed": false
+    }
+  ]
+}

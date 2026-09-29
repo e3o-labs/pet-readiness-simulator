@@ -1,0 +1,277 @@
+{
+  "schema": "dog-first.lh01-regression-fixtures.v1",
+  "fixture_set_id": "PUBLIC-BASELINE-2026-09-29",
+  "version": 1,
+  "lifecycle": "reviewed_frozen",
+  "evidence_level": "EL-SYN",
+  "review": {
+    "kind": "deterministic_contract_review",
+    "reviewed_at": "2026-09-29",
+    "reviewer_role": "public_project_maintainer",
+    "derived_from_committed_contracts": [
+      "tests/mission-evidence.test.mjs",
+      "tests/companion-evidence.test.mjs",
+      "tests/evidence-first-readiness.test.mjs",
+      "tests/explainable-report.test.mjs",
+      "tests/storage-repository.test.mjs",
+      "tests/feedback-delivery-coordinator.test.mjs"
+    ],
+    "claim_boundary": "Synthetic deterministic regression fixture only; not real-user, expert, legal, physical-device, or release evidence."
+  },
+  "ai_boundary": {
+    "structuring_assistance_used": true,
+    "dynamic_generation_allowed": false,
+    "runtime_model_call_allowed": false,
+    "pass_fail_source": "committed_fixture_values_only",
+    "promotion_boundary": "Fixture results remain EL-SYN and cannot promote evidence or establish a release decision."
+  },
+  "cases": [
+    {
+      "id": "SAFE-01",
+      "kind": "readiness",
+      "description": "A canonical safe companion choice does not create a concern or penalty.",
+      "input": {
+        "logs": [
+          { "day": 1, "state": "completed" },
+          { "day": 2, "state": "completed" },
+          { "day": 3, "state": "completed" },
+          { "day": 4, "state": "completed" },
+          { "day": 5, "state": "completed" },
+          { "day": 6, "state": "completed" },
+          { "day": 7, "state": "completed" }
+        ],
+        "companion_choices": [
+          { "event_id": "toilet_accident", "choice_id": "clean_and_reset" }
+        ]
+      },
+      "expected": {
+        "overall": 100,
+        "evidenceStatus": "complete",
+        "completedMissionCount": 7,
+        "skippedMissionCount": 0,
+        "missingMissionCount": 0,
+        "companionEvidenceCount": 1,
+        "scores": {
+          "environment_fit": 100,
+          "care_consistency": 100,
+          "budget_readiness": 100,
+          "behavior_understanding": 100,
+          "species_knowledge": 100
+        },
+        "suggestionSources": ["general_context", "general_context", "general_context"],
+        "supportingEventIds": [[], [], []],
+        "suggestionEvidenceLevels": ["EL-SYN", "EL-SYN", "EL-SYN"]
+      }
+    },
+    {
+      "id": "RISKY-01",
+      "kind": "readiness",
+      "description": "A canonical risky response affects only mapped categories and remains traceable.",
+      "input": {
+        "logs": [
+          { "day": 1, "state": "completed" },
+          { "day": 2, "state": "completed" },
+          { "day": 3, "state": "completed" },
+          { "day": 4, "state": "completed" },
+          { "day": 5, "state": "completed" },
+          { "day": 6, "state": "completed" },
+          { "day": 7, "state": "completed" }
+        ],
+        "companion_choices": [
+          { "event_id": "toilet_accident", "choice_id": "scold" }
+        ]
+      },
+      "expected": {
+        "overall": 95,
+        "evidenceStatus": "complete",
+        "completedMissionCount": 7,
+        "skippedMissionCount": 0,
+        "missingMissionCount": 0,
+        "companionEvidenceCount": 1,
+        "scores": {
+          "environment_fit": 100,
+          "care_consistency": 88,
+          "budget_readiness": 100,
+          "behavior_understanding": 88,
+          "species_knowledge": 100
+        },
+        "suggestionSources": ["recorded_choice", "recorded_choice", "general_context"],
+        "suggestionCategories": ["care_consistency", "behavior_understanding", null],
+        "supportingEventIds": [["toilet_accident"], ["toilet_accident"], []],
+        "suggestionEvidenceLevels": ["EL-SYN", "EL-SYN", "EL-SYN"]
+      }
+    },
+    {
+      "id": "SKIPPED-01",
+      "kind": "readiness",
+      "description": "Seven explicit skips remain incomplete and do not gain an evidence advantage.",
+      "input": {
+        "logs": [
+          { "day": 1, "state": "skipped" },
+          { "day": 2, "state": "skipped" },
+          { "day": 3, "state": "skipped" },
+          { "day": 4, "state": "skipped" },
+          { "day": 5, "state": "skipped" },
+          { "day": 6, "state": "skipped" },
+          { "day": 7, "state": "skipped" }
+        ]
+      },
+      "expected": {
+        "overall": 72,
+        "evidenceStatus": "incomplete",
+        "recordedMissionCount": 7,
+        "completedMissionCount": 0,
+        "skippedMissionCount": 7,
+        "missingMissionCount": 0,
+        "scores": {
+          "environment_fit": 72,
+          "care_consistency": 72,
+          "budget_readiness": 72,
+          "behavior_understanding": 72,
+          "species_knowledge": 72
+        }
+      }
+    },
+    {
+      "id": "MISSING-01",
+      "kind": "readiness",
+      "description": "Seven missing missions remain incomplete and match the skipped non-response score.",
+      "input": {
+        "logs": []
+      },
+      "expected": {
+        "overall": 72,
+        "evidenceStatus": "incomplete",
+        "recordedMissionCount": 0,
+        "completedMissionCount": 0,
+        "skippedMissionCount": 0,
+        "missingMissionCount": 7,
+        "scores": {
+          "environment_fit": 72,
+          "care_consistency": 72,
+          "budget_readiness": 72,
+          "behavior_understanding": 72,
+          "species_knowledge": 72
+        }
+      }
+    },
+    {
+      "id": "DUPLICATE-01",
+      "kind": "readiness",
+      "description": "A later valid record deterministically replaces an earlier record for the same day.",
+      "input": {
+        "logs": [
+          { "day": 1, "state": "skipped" },
+          { "day": 1, "state": "completed" },
+          { "day": 2, "state": "completed" },
+          { "day": 3, "state": "completed" },
+          { "day": 4, "state": "completed" },
+          { "day": 5, "state": "completed" },
+          { "day": 6, "state": "completed" },
+          { "day": 7, "state": "completed" }
+        ]
+      },
+      "expected": {
+        "overall": 100,
+        "evidenceStatus": "complete",
+        "recordedMissionCount": 7,
+        "completedMissionCount": 7,
+        "skippedMissionCount": 0,
+        "missingMissionCount": 0
+      }
+    },
+    {
+      "id": "CONTRADICTORY-01",
+      "kind": "readiness",
+      "description": "Stored impact, category, and evidence labels cannot contradict the canonical safe choice.",
+      "input": {
+        "logs": [
+          { "day": 1, "state": "completed" },
+          { "day": 2, "state": "completed" },
+          { "day": 3, "state": "completed" },
+          { "day": 4, "state": "completed" },
+          { "day": 5, "state": "completed" },
+          { "day": 6, "state": "completed" },
+          { "day": 7, "state": "completed" }
+        ],
+        "stored_companion_responses": {
+          "toilet_accident": {
+            "choiceId": "clean_and_reset",
+            "impact": "risky",
+            "categories": ["budget_readiness"],
+            "evidenceLevel": "EL-EXPERT"
+          }
+        }
+      },
+      "expected": {
+        "overall": 100,
+        "evidenceStatus": "complete",
+        "companionEvidenceCount": 1,
+        "scores": {
+          "environment_fit": 100,
+          "care_consistency": 100,
+          "budget_readiness": 100,
+          "behavior_understanding": 100,
+          "species_knowledge": 100
+        },
+        "suggestionSources": ["general_context", "general_context", "general_context"],
+        "supportingEventIds": [[], [], []],
+        "suggestionEvidenceLevels": ["EL-SYN", "EL-SYN", "EL-SYN"]
+      }
+    },
+    {
+      "id": "LONG-COPY-01",
+      "kind": "presentation",
+      "description": "Long Korean report copy remains complete in the visible and accessibility presentation contracts.",
+      "input": {
+        "index": 0,
+        "suggestion": {
+          "sourceType": "recorded_choice",
+          "observedInSimulation": "평일의 예상보다 긴 외출과 저녁 돌봄 일정이 겹친 날에 산책, 물 확인, 배변 정리와 차분한 휴식 공간 준비를 한 번에 조정하기 어렵다고 기록했어요.",
+          "whyThisMatters": "한 번의 선택이 실제 생활 전체를 확정하지는 않지만 반복되는 시간 충돌은 강아지의 기본 필요를 놓치지 않도록 가족과 동거인의 역할, 대체 돌봄 연락 순서, 이동 시간을 구체적으로 확인해야 할 이유가 됩니다.",
+          "tryNext": "다음 평일을 기준으로 출근 전과 귀가 후에 할 일을 나누고, 귀가가 늦어질 때 연락할 사람과 맡길 일, 확인할 시간을 한 줄씩 적은 뒤 실제 결정 전 가족과 보호소 또는 필요한 전문가에게 질문해 보세요.",
+          "supportingEventIds": ["walk_request", "room_mess", "quiet_companion"]
+        },
+        "minimum_accessibility_label_length": 350
+      },
+      "expected": {
+        "observationPreserved": true,
+        "rationalePreserved": true,
+        "nextActionPreserved": true,
+        "allEventIdsPreserved": true,
+        "evidenceBoundaryPreserved": true,
+        "minimumLengthMet": true,
+        "supportingEvidenceText": "근거 기록 ID · walk_request · room_mess · quiet_companion"
+      }
+    },
+    {
+      "id": "STORAGE-CORRUPTION-01",
+      "kind": "storage_corruption",
+      "description": "Corruption in any persisted key keeps hydration and all persistence effects closed.",
+      "input": {
+        "corrupt_keys": ["progress", "feedbackQueue", "feedbackReceipts"],
+        "corrupt_raw_value": "{\"truncated\""
+      },
+      "expected": {
+        "keys": ["progress", "feedbackQueue", "feedbackReceipts"],
+        "hydrationStatuses": ["error", "error", "error"],
+        "persistenceEffectsOpened": [false, false, false]
+      }
+    },
+    {
+      "id": "FEEDBACK-RACE-01",
+      "kind": "feedback_race",
+      "description": "App-active overlap and a new item share one operation and drain sequentially.",
+      "input": {
+        "initial_submission_id": "CS-PUBLIC-FIRST",
+        "new_submission_id": "CS-PUBLIC-SECOND"
+      },
+      "expected": {
+        "sharedOperation": true,
+        "maxActiveFlushes": 1,
+        "flushSubmissionIds": [["CS-PUBLIC-FIRST"], ["CS-PUBLIC-SECOND"]],
+        "acceptedSubmissionIds": ["CS-PUBLIC-FIRST", "CS-PUBLIC-SECOND"]
+      }
+    }
+  ]
+}
