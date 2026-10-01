@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "나란히 걸어봄",
+    "slug": "pet-readiness-simulator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {},
+    "web": {},
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "enableBackgroundRemoteNotifications": false
+        }
+      ],
+      "expo-audio"
+    ]
+  }
+}

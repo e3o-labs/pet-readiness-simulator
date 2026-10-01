@@ -1,0 +1,40 @@
+name: Feature or specification proposal
+description: Propose a user problem and a bounded change.
+title: "[Proposal]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: "For changes to animal-care claims, scoring, privacy, or safety, explain the review needed. Do not include real user data."
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: What is difficult or unclear today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Smallest useful change
+      description: Describe a possible solution without prescribing unnecessary implementation detail.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How could we tell it works?
+    validations:
+      required: true
+  - type: dropdown
+    id: review
+    attributes:
+      label: Review area
+      options:
+        - No special review identified
+        - Animal health or behavior
+        - Scoring or recommendations
+        - Privacy or data handling
+        - Accessibility or user safety
+    validations:
+      required: true

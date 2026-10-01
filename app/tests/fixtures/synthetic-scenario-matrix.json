@@ -1,0 +1,202 @@
+{
+  "content_pack_id": "synthetic-user-dog-scenario-matrix.v0",
+  "created_date": "2026-07-10",
+  "language": "ko",
+  "purpose": "Exercise onboarding and report coverage with fictional profiles. This fixture is not user research or market validation.",
+  "user_grounding_boundary": "Use Korean synthetic persona references for coverage and tone grounding only. Do not treat them as real user evidence, market validation, or demographic pet-fit prediction.",
+  "scenarios": [
+    {
+      "scenario_id": "SCN_SYN_001",
+      "synthetic_user_id": "USER_SYN_U01",
+      "app_profile_id": "DOG_APP_D02",
+      "scenario_label_ko": "장시간 외근 사용자 x 외출 공백 민감 소형견",
+      "expected_friction_tags": [
+        "alone_time_gap_risk",
+        "noise_conflict_risk"
+      ],
+      "target_checks": [
+        "온보딩에서 혼자 있는 시간 경고",
+        "Day 3/4 루틴 미션 반응",
+        "리포트가 판정이 아닌 준비 행동으로 표현되는지"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_002",
+      "synthetic_user_id": "USER_SYN_U02",
+      "app_profile_id": "DOG_APP_D05",
+      "scenario_label_ko": "아이 있는 가족 x 짧고 꾸준한 훈련이 필요한 중형견",
+      "expected_friction_tags": [
+        "public_safety_gap_risk",
+        "noise_conflict_risk"
+      ],
+      "target_checks": [
+        "가족 역할 분담 질문",
+        "훈련 루틴 제안",
+        "아이와 강아지 상호작용 안전 문구"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_003",
+      "synthetic_user_id": "USER_SYN_U03",
+      "app_profile_id": "DOG_APP_D08",
+      "scenario_label_ko": "러너 x 활동량과 산책 통제가 중요한 대형견",
+      "expected_friction_tags": [
+        "routine_gap_risk",
+        "public_safety_gap_risk",
+        "budget_gap_risk"
+      ],
+      "target_checks": [
+        "활동량 선호가 과신으로 처리되지 않는지",
+        "산책 통제와 비용 계획 노출",
+        "큰 카드/긴 리포트 UI 처리"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_004",
+      "synthetic_user_id": "USER_SYN_U04",
+      "app_profile_id": "DOG_APP_D03",
+      "scenario_label_ko": "재택 예산 민감 사용자 x 미용 루틴이 중요한 소형견",
+      "expected_friction_tags": [
+        "body_care_gap_risk",
+        "budget_gap_risk"
+      ],
+      "target_checks": [
+        "미용/기초관리 비용 문구",
+        "낮은 예산 점수 표시",
+        "보완 행동 추천"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_005",
+      "synthetic_user_id": "USER_SYN_U05",
+      "app_profile_id": "DOG_APP_D07",
+      "scenario_label_ko": "마당 있는 가족 x 공간과 비용 계획이 중요한 대형견",
+      "expected_friction_tags": [
+        "budget_gap_risk",
+        "routine_gap_risk"
+      ],
+      "target_checks": [
+        "마당만으로 충분하다는 오해 방지",
+        "가족 역할 분담",
+        "대형견 비용 계획"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_006",
+      "synthetic_user_id": "USER_SYN_U06",
+      "app_profile_id": "DOG_APP_D10",
+      "scenario_label_ko": "시니어 가구 x 노령견",
+      "expected_friction_tags": [
+        "health_support_gap_risk",
+        "budget_gap_risk"
+      ],
+      "target_checks": [
+        "의료/응급 계획 문구",
+        "불안 조장 없이 준비 행동으로 연결",
+        "큰 글/짧은 흐름 UI 필요성"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_007",
+      "synthetic_user_id": "USER_SYN_U07",
+      "app_profile_id": "DOG_APP_D01",
+      "scenario_label_ko": "SNS 이미지에 끌린 학생 x 차분한 소형견",
+      "expected_friction_tags": [
+        "budget_gap_risk",
+        "alone_time_gap_risk",
+        "routine_gap_risk"
+      ],
+      "target_checks": [
+        "감정 기반 선택을 비난하지 않는 문구",
+        "주거/예산 안정성 확인",
+        "공유 가능한 기록 UX"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_008",
+      "synthetic_user_id": "USER_SYN_U08",
+      "app_profile_id": "DOG_APP_D06",
+      "scenario_label_ko": "구조견 관심 경험자 x 천천히 적응할 중형견",
+      "expected_friction_tags": [
+        "alone_time_gap_risk",
+        "noise_conflict_risk",
+        "body_care_gap_risk"
+      ],
+      "target_checks": [
+        "적응 기간 기록",
+        "방문객/소음 이벤트",
+        "경험자에게도 과도한 확신을 주지 않는 리포트"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_009",
+      "synthetic_user_id": "USER_SYN_U01",
+      "app_profile_id": "DOG_APP_D04",
+      "scenario_label_ko": "바쁜 1인 가구 x 매일 산책이 필요한 중형견",
+      "expected_friction_tags": [
+        "routine_gap_risk",
+        "public_safety_gap_risk"
+      ],
+      "target_checks": [
+        "평일 루틴 충돌",
+        "중도 포기 상태 처리",
+        "Day 1-7 리마인더 UX"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_010",
+      "synthetic_user_id": "USER_SYN_U02",
+      "app_profile_id": "DOG_APP_D09",
+      "scenario_label_ko": "가족 사용자 x 개체차 관찰이 중요한 믹스/이력 미상견",
+      "expected_friction_tags": [
+        "alone_time_gap_risk",
+        "body_care_gap_risk"
+      ],
+      "target_checks": [
+        "견종 단정 금지",
+        "관찰 기록 UI",
+        "가족 합의 리포트 문구"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_011",
+      "synthetic_user_id": "USER_SYN_U04",
+      "app_profile_id": "DOG_APP_D08",
+      "scenario_label_ko": "예산 민감 사용자 x 활동량 높은 대형견",
+      "expected_friction_tags": [
+        "budget_gap_risk",
+        "routine_gap_risk",
+        "public_safety_gap_risk"
+      ],
+      "target_checks": [
+        "낮은 적합도 상황",
+        "강한 경고 대신 보완 행동",
+        "리포트 CTA"
+      ]
+    },
+    {
+      "scenario_id": "SCN_SYN_012",
+      "synthetic_user_id": "USER_SYN_U08",
+      "app_profile_id": "DOG_APP_D09",
+      "scenario_label_ko": "경험 있는 구조견 관심자 x 믹스/이력 미상견",
+      "expected_friction_tags": [
+        "alone_time_gap_risk",
+        "body_care_gap_risk"
+      ],
+      "target_checks": [
+        "경험자용 깊이 있는 질문",
+        "개체차 관찰 중심 문구",
+        "오픈 테스트 피드백 질문"
+      ]
+    }
+  ],
+  "completion_gate": {
+    "minimum_user_profiles": 8,
+    "minimum_dog_profiles": 10,
+    "minimum_scenarios": 12,
+    "must_label_synthetic": true,
+    "must_not_claim_market_validation": true
+  },
+  "proof_boundary": "Synthetic scenarios validate test coverage and UI/report behavior only. They do not represent real people or support claims about adoption outcomes.",
+  "source_kind": "synthetic_test_fixture"
+}

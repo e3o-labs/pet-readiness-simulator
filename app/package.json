@@ -1,0 +1,33 @@
+{
+  "name": "pet-readiness-simulator",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@expo/metro-runtime": "~57.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.4",
+    "expo-audio": "~57.0.0",
+    "expo-notifications": "~57.0.3",
+    "expo-status-bar": "~57.0.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.0",
+    "react-native-web": "^0.21.2"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "node tests/calendar-progress.test.mjs && node tests/build4-feedback.test.mjs && node tests/goal8-alpha-harness.mjs && node tests/profile-recommendation-context.test.mjs && node tests/storage-hydration.test.mjs && node tests/storage-repository.test.mjs && node tests/mission-evidence.test.mjs && node tests/companion-evidence.test.mjs && node tests/evidence-first-readiness.test.mjs && node tests/explainable-report.test.mjs && node tests/frozen-regression-fixtures.test.mjs && node tests/readiness-sufficiency.test.mjs && node tests/companion-experience.test.mjs && node tests/care-rhythm-flow.test.mjs && node tests/fluent-korean-copy.test.mjs && node tests/readiness-learning-content.test.mjs && node tests/release-onboarding.test.mjs && node tests/public-platform-boundary.test.mjs && node tests/service-feedback-lifecycle.test.mjs && node tests/service-feedback-transport.test.mjs && node tests/feedback-delivery-coordinator.test.mjs && node tests/service-feedback-privacy-notice.test.mjs && node tests/service-feedback-endpoint.test.mjs",
+    "check": "npm run test && expo export --platform web && npm run check:public && npm run licenses:check",
+    "check:public": "node ../scripts/check-public-boundary.mjs",
+    "licenses:scan": "node ../scripts/generate-dependency-license-inventory.mjs",
+    "licenses:check": "node ../scripts/generate-dependency-license-inventory.mjs --check"
+  },
+  "overrides": {
+    "image-size": "2.0.4"
+  },
+  "private": true
+}

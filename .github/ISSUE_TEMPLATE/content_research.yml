@@ -1,0 +1,28 @@
+name: Research or learning-content proposal
+description: Suggest a source or user-facing learning change for review.
+title: "[Research]: "
+labels: ["research", "safety-review"]
+body:
+  - type: markdown
+    attributes:
+      value: "A source suggestion is not expert approval. Do not include private participant data or copy protected material."
+  - type: input
+    id: source
+    attributes:
+      label: Source URL and publication date
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Proposed claim or learning question
+      description: State the narrow claim and what it should not be used to conclude.
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Limits and reviewer needed
+      description: Describe gaps, population limits, rights concerns, and any professional review needed.
+    validations:
+      required: true

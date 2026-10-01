@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible problem in the browser experience or repository.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include personal data, private screenshots, credentials, or real participant records."
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open… 2. Choose… 3. See…"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: App version and platform
+      placeholder: "Commit or release tag; browser name and version; desktop or mobile"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error text (if any)
+      description: Remove names, contact details, device identifiers, and secrets before posting.
+    validations:
+      required: false
