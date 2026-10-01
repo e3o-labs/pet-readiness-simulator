@@ -1,0 +1,13 @@
+.git
+.vercel
+**/node_modules
+**/.expo
+**/dist
+**/.env
+**/.env.*
+.agent
+_workspace
+data
+deploy
+task.md
+PROJECT_STATUS.md

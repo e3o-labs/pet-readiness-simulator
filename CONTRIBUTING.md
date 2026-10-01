@@ -14,6 +14,8 @@ Thanks for helping make this project more useful and safer. Small, reviewable co
 
 ## Issue to pull request
 
+For public alpha observations and feature intake, see [the feedback workflow](docs/community-feedback.md). Maintainers keep the original feedback linked to its spec, PR, and release decision.
+
 1. Search existing issues and discussions. Use a `good first issue` or `help wanted` issue when one fits.
 2. For a new behavior, user-facing claim, or data flow, open a discussion or spec issue first. Describe the user problem, the smallest useful change, and how success will be checked.
 3. Wait for a maintainer to confirm scope and mark any safety or privacy review needed.
