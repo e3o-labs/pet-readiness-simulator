@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Share an alpha experience / 사용 경험 공유
+    url: https://github.com/e3o-labs/pet-readiness-simulator/issues/2
+    about: Share a public observation without personal data. GitHub login is required.
+  - name: Suggest an alpha feature / 기능 제안
+    url: https://github.com/e3o-labs/pet-readiness-simulator/issues/3
+    about: Describe the problem, current workaround, smallest improvement, and success criteria.
   - name: Discuss a feature or product question
     url: https://github.com/e3o-labs/pet-readiness-simulator/discussions
     about: Start with a discussion before work that changes product behavior or user-facing guidance.

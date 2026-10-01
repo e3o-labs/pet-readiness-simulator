@@ -33,6 +33,8 @@ See [the product scope](docs/specification.md), [safety boundaries](docs/product
 
 ## Contributing
 
+Share a [browser experience](https://github.com/e3o-labs/pet-readiness-simulator/issues/2) or [feature idea](https://github.com/e3o-labs/pet-readiness-simulator/issues/3). GitHub login is required and posts are public; use fictional examples without contact details or real care records. The app's public feedback screen links to these intake threads without attaching local simulation data. See [how feedback becomes work](docs/community-feedback.md) and [Vercel preview setup](docs/deployment.md).
+
 Contributions are welcome in documentation, UX copy, tests, code, and carefully sourced research. Start with an issue tagged `good first issue` or `help wanted`. For new behavior or learning content, discuss the problem and agree on a short spec before opening a pull request.
 
 Changes affecting animal health or behavior claims, breed/personality framing, scoring, privacy, retention, camera use, or user safety require maintainer review and may require a qualified subject-matter reviewer. See [CONTRIBUTING.md](CONTRIBUTING.md).

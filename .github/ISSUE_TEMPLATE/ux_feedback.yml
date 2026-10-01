@@ -1,0 +1,31 @@
+name: UX feedback / 사용 경험
+description: Tell us what you tried, what happened, and what would help.
+title: "[UX]: "
+labels: ["ux", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "This issue is public. Use fictional examples. Do not include contact details, real care records, private screenshots, or health information. / 공개 글입니다. 개인 정보 없이 가상 예시로 작성해 주세요."
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to do? / 하려고 했던 일
+      description: Name the screen or step and the goal.
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: What happened? / 실제 경험
+      description: Describe what was clear, confusing, or unexpectedly difficult.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What would help? / 도움이 될 개선
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and approximate screen size / 브라우저·화면 크기 (optional)
+      placeholder: "Safari, phone / Chrome, desktop"

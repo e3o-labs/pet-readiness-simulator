@@ -19,7 +19,7 @@ const secretPatterns = [
 
 async function walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
-    if (['.git', 'node_modules', '.expo', 'dist'].includes(entry.name)) continue;
+    if (['.git', '.vercel', 'node_modules', '.expo', 'dist'].includes(entry.name)) continue;
     const absolute = path.join(dir, entry.name);
     const relative = path.relative(root, absolute).split(path.sep).join('/');
     if (entry.isDirectory()) {

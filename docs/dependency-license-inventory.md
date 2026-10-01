@@ -479,7 +479,7 @@ This inventory records package-publisher license identifiers; it does not replac
 | unpipe | 1.0.0 | MIT | transitive dependency |
 | update-browserslist-db | 1.3.3 | MIT | transitive dependency |
 | utils-merge | 1.0.1 | MIT | transitive dependency |
-| uuid | 7.0.3 | MIT | transitive dependency |
+| uuid | 11.1.1 | MIT | transitive dependency |
 | validate-npm-package-name | 5.0.1 | ISC | transitive dependency |
 | vary | 1.1.2 | MIT | transitive dependency |
 | vlq | 1.0.1 | MIT | transitive dependency |

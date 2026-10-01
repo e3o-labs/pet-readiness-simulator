@@ -1,7 +1,7 @@
 name: Feature or specification proposal
 description: Propose a user problem and a bounded change.
 title: "[Proposal]: "
-labels: ["enhancement"]
+labels: ["enhancement", "needs-triage"]
 body:
   - type: markdown
     attributes:
@@ -13,6 +13,11 @@ body:
       description: What is difficult or unclear today?
     validations:
       required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current workaround and impact
+      description: How do you handle this today, and which part of the experience does it affect? Use fictional examples.
   - type: textarea
     id: proposal
     attributes:
