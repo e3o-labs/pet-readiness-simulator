@@ -20,9 +20,14 @@ Checks include synthetic tests, web export, the publication boundary, and the de
 
 ## Preview, ownership, and Git integration
 
-A claimable preview can be created from an archive of the exact public commit. Archive tracked files only; do not upload a private checkout or local workspace. The preview must not contain `.git`, local environment files, private operating documents, or participant/contact data.
+Create a preview with the [official Vercel CLI](https://vercel.com/docs/cli) authenticated to the maintainer's account. Archive tracked files from the exact public commit only; do not upload a private checkout or local workspace. The preview must not contain `.git`, local environment files, private operating documents, or participant/contact data.
 
-The claim URL transfers control to a Vercel account. Store that URL in private operations or the maintainer handoff, not in this public repository. An unclaimed preview does not establish an owned Git integration. After claiming/importing the project, verify the repository connection, access rules, preview visibility, and domain in Vercel. Connecting a repository may trigger its production branch; use a branch containing the reviewed app, rather than the seed-only `main`, until the baseline is merged.
+```sh
+vercel login
+vercel deploy /path/to/public-snapshot --target=preview --yes
+```
+
+Use the intended Vercel team/project when linking the snapshot. CLI preview deployment alone does not establish Git integration. After importing the repository, verify the repository connection, access rules, preview visibility, and domain in Vercel. Connecting a repository may trigger its production branch; use a branch containing the reviewed app, rather than the seed-only `main`, until the baseline is merged. Authentication and any ownership/claim links belong in the private maintainer handoff, never in this public repository.
 
 Issue forms and contribution links on GitHub use the default branch. The two alpha intake issues work while baseline PRs are being reviewed; per-topic templates become available after the baseline and community changes reach `main`.
 

@@ -13,7 +13,7 @@ This roadmap describes review goals, not release promises. Dates will be added o
 
 - [x] Connect public UX and feature intake to a privacy-aware in-app entry point.
 - [x] Prepare Vercel web export and preview configuration.
-- [ ] Claim/connect an owned Vercel project and make the production release decision.
+- [ ] Connect an owned Vercel project and make the production release decision.
 - [ ] Add a PWA manifest, rights-cleared icons, and accessible installation behavior.
 - [ ] Add a versioned service worker with explicit update and offline-cache rules.
 - [ ] Verify browser storage, notification support, and offline recovery on supported browsers.
