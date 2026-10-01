@@ -12,7 +12,7 @@ No other image, screenshot, or third-party media asset is bundled in this baseli
 
 ## JavaScript dependencies
 
-The direct app dependencies in `app/package-lock.json` were checked from a clean install. Each declares MIT:
+The direct app dependencies declare MIT in the committed `app/package-lock.json` metadata:
 
 | Package | Version | License |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ The direct app dependencies in `app/package-lock.json` were checked from a clean
 | `react-native` | 0.86.0 | MIT |
 | `react-native-web` | 0.21.2 | MIT |
 
-The generated [dependency license inventory](docs/dependency-license-inventory.md) lists all 488 installed package/version records; none had missing license metadata on the baseline scan. Package licenses remain their own and are not changed by the root MIT License.
+The generated [dependency license inventory](docs/dependency-license-inventory.md) lists the complete set of locked package/version records, including optional platform packages. The current lockfile contains no packages with missing license metadata. Package licenses remain their own and are not changed by the root MIT License.
 
 Notable transitive notices:
 

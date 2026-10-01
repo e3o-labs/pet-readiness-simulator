@@ -7,7 +7,7 @@ This roadmap describes review goals, not release promises. Dates will be added o
 - [x] Create a clean-history public export with project license and contribution guidance.
 - [x] Keep private operating records and real participant/contact data out of the public tree.
 - [x] Verify install, tests, and a web export from a clean checkout.
-- [ ] Review the initial export and merge its public baseline PR.
+- [x] Review the initial export and merge its public baseline PR.
 
 ## 0.2 — PWA and contributor-ready
 
