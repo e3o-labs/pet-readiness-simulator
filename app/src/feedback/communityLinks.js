@@ -7,6 +7,12 @@ export const COMMUNITY_LINKS = Object.freeze({
   contribute: REPOSITORY_URL + '/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22',
 });
 
+const RETURN_SCREENS = new Set(['welcome', 'service_intro', 'onboarding', 'profiles', 'mission', 'feed', 'report']);
+
+export function communityReturnScreen(sourceScreen, selectedProfileId) {
+  return RETURN_SCREENS.has(sourceScreen) ? sourceScreen : (selectedProfileId ? 'mission' : 'service_intro');
+}
+
 export async function openCommunityLink(kind, linking) {
   if (!Object.hasOwn(COMMUNITY_LINKS, kind)) return { status: 'invalid_link' };
   try {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { COMMUNITY_LINKS, openCommunityLink } from '../src/feedback/communityLinks.js';
+import { COMMUNITY_LINKS, communityReturnScreen, openCommunityLink } from '../src/feedback/communityLinks.js';
 
 const opened = [];
 for (const kind of Object.keys(COMMUNITY_LINKS)) {
@@ -16,11 +16,19 @@ for (const kind of ['unknown', '__proto__', 'constructor', 'https://other.invali
   assert.deepEqual(await openCommunityLink(kind, { openURL: () => assert.fail('Invalid destinations must not open') }), { status: 'invalid_link' });
 }
 assert.deepEqual(await openCommunityLink('feature', { openURL: async () => { throw new Error('offline'); } }), { status: 'open_failed' });
+for (const screen of ['welcome', 'service_intro', 'onboarding', 'profiles', 'mission', 'feed', 'report']) {
+  assert.equal(communityReturnScreen(screen, ''), screen);
+  assert.equal(communityReturnScreen(screen, 'fictional-dog'), screen);
+}
+for (const screen of ['unknown', undefined, 'service_feedback', 'service_feedback_export', 'private_screen']) {
+  assert.equal(communityReturnScreen(screen, ''), 'service_intro', 'Reload before onboarding must return to a safe entry');
+  assert.equal(communityReturnScreen(screen, 'fictional-dog'), 'mission', 'Reload after selection must preserve the care entry');
+}
 
 const app = await readFile(new URL('../App.js', import.meta.url), 'utf8');
 const publicRoute = "if (state.screen === 'service_feedback' && !FEEDBACK_AVAILABLE)";
 assert.ok(app.indexOf(publicRoute) < app.indexOf("if (state.screen === 'service_feedback') return"));
-assert.ok(app.includes('onReturn={() => setScreen(serviceFeedbackSourceScreen)}'));
+assert.ok(app.includes('onReturn={() => setScreen(communityReturnScreen(serviceFeedbackSourceScreen, state.selectedProfileId))}'));
 const screen = await readFile(new URL('../src/feedback/CommunityFeedbackScreen.js', import.meta.url), 'utf8');
 for (const copy of ['GitHub 로그인이 필요해요', '누구나 볼 수', '자동으로 첨부되지', '이전 화면으로 돌아가기']) assert.ok(screen.includes(copy));
 assert.ok(screen.includes('accessibilityRole="link"'));
