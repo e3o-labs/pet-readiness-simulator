@@ -23,6 +23,7 @@ npm run check
 
 ## What the web experience does
 
+- Keeps every screen in a centered mobile-width column, up to 430 CSS pixels; narrower browser windows use their full available width.
 - Collects household, housing, schedule, budget, and experience choices for an on-device simulation.
 - Offers fictional dog profiles, daily care prompts, reflection notes, and a summary of recorded choices.
 - Stores simulation progress on the user's device.
