@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { LearningLibrary } from '../learning/LearningContent';
 import { ONBOARDING_GUIDE_STEPS } from './guideSteps';
 
 const GUIDE_IMAGES = {
@@ -27,7 +28,7 @@ export function HeaderGuideMenu() {
       <SafeAreaView style={styles.safe}>
         <View style={styles.top}><Text style={styles.label}>{menu === 'education' ? '교육 콘텐츠' : '사용법'}</Text><Pressable accessibilityRole="button" accessibilityLabel="안내 닫기" style={styles.link} onPress={close}><Text style={styles.linkText}>닫기</Text></Pressable></View>
         <ScrollView ref={scrollRef} contentContainerStyle={styles.page}>
-          {menu === 'education' ? <><Text accessibilityRole="header" style={styles.title}>교육 콘텐츠를 준비하고 있어요.</Text><Text style={styles.body}>강아지를 이해하고 함께 살아가는 데 도움이 되는 짧은 글과 그림을 준비하고 있어요. 전문가 검토를 마친 뒤 이곳에서 안내해 드릴게요.</Text><Pressable accessibilityRole="button" style={styles.button} onPress={close}><Text style={styles.buttonText}>이전 화면으로 돌아가기</Text></Pressable></> : <>
+          {menu === 'education' ? <LearningLibrary onNavigate={() => scrollRef.current?.scrollTo({ y: 0, animated: false })} /> : <>
             <Text accessibilityLiveRegion="polite" style={styles.label}>{step + 1} / {ONBOARDING_GUIDE_STEPS.length}</Text>
             <Text accessibilityRole="header" style={styles.title}>{guide.title}</Text><Text style={styles.body}>{guide.body}</Text>
             <View style={styles.action}><Text style={styles.actionLabel}>이 화면에서 할 일</Text><Text style={styles.actionText}>{guide.action}</Text></View>

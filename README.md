@@ -8,7 +8,7 @@ A browser-first, seven-day practice experience for people considering life with 
 
 This is an early open-source code baseline. The simulation and its score are not validated predictors of adoption outcomes. The app is not a substitute for a shelter, veterinarian, qualified behavior professional, or local legal guidance.
 
-The repository contains software and explicitly synthetic test fixtures. It does not contain pilot participant records, contact lists, App Store or TestFlight evidence, production service configuration, unreviewed behavior-learning drafts, or private operator notes.
+The repository contains software and explicitly synthetic test fixtures. It does not contain pilot participant records, contact lists, App Store or TestFlight evidence, production service configuration, unreviewed behavior-learning drafts, or private operator notes. Seven bounded, source-reviewed lessons are available from the education menu and daily learning tab; see [education content](docs/education-content.md).
 
 ## Run locally
 

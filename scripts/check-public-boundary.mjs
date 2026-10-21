@@ -18,6 +18,16 @@ for (const asset of guideManifest.assets) {
   else allowedMedia.add(asset.path);
 }
 if (expectedGuidePaths.size) failures.push('reviewed usage guide screenshot missing');
+const learningManifest = JSON.parse(await readFile(path.join(root, 'docs/learning-illustration-assets.json'), 'utf8'));
+const expectedLearningPaths = new Set(Array.from({ length: 7 }, (_, day) => Array.from({ length: 3 }, (_, scene) => `app/assets/learning/v3/day-${day + 1}-scene-${scene + 1}.png`)).flat());
+if (learningManifest.assets.length !== 21) failures.push('learning asset count differs from reviewed set');
+for (const asset of learningManifest.assets) {
+  if (!expectedLearningPaths.delete(asset.path)) { failures.push('unreviewed or duplicate learning path'); continue; }
+  const digest = createHash('sha256').update(await readFile(path.join(root, asset.path))).digest('hex');
+  if (digest !== asset.sha256) failures.push(asset.path + ': illustration changed; renew context review');
+  else allowedMedia.add(asset.path);
+}
+if (expectedLearningPaths.size) failures.push('reviewed learning illustration missing');
 const forbiddenRoots = new Set(['.agent', '_workspace', 'data', 'deploy', 'plans', 'web']);
 const privateKeyHeader = ['-----BEGIN ', '(?:RSA |EC |OPENSSH |DSA )?', 'PRIVATE KEY-----'].join('');
 const certificateHeader = ['-----BEGIN ', 'CERTIFICATE-----'].join('');

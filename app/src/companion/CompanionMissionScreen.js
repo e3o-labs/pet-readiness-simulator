@@ -1,3 +1,4 @@
+import { LearningArticle } from '../learning/LearningContent';
 import { useState } from 'react';
 import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { CompanionAppearanceSettings, CompanionEventPanel, CompanionHero } from './CompanionPanel';
@@ -11,23 +12,7 @@ function DayDots({ day }) {
   return <View style={styles.dots}>{[1, 2, 3, 4, 5, 6, 7].map((value) => <View key={value} style={[styles.dot, value < day && styles.dotDone, value === day && styles.dotCurrent]} />)}</View>;
 }
 
-function LearningCard({ card }) {
-  if (!card) return null;
-  return (
-    <View style={styles.learningCard}>
-      <Text style={styles.learningEyebrow}>오늘 알아둘 1가지</Text>
-      <Text style={styles.learningTitle}>{card.title}</Text>
-      <Text style={styles.learningSummary}>{card.summary}</Text>
-      <Text style={styles.learningLabel}>왜 살펴보나요</Text>
-      <Text style={styles.learningBody}>{card.why}</Text>
-      <Text style={styles.learningLabel}>오늘 해볼 것</Text>
-      <Text style={styles.learningTry}>{card.tryToday}</Text>
-      <Text style={styles.learningLabel}>이런 반응은 관찰해요</Text>
-      {card.watchFor.map((item) => <View key={item} style={styles.learningBulletRow}><Text style={styles.learningBullet}>•</Text><Text style={styles.learningBody}>{item}</Text></View>)}
-      <Text style={styles.learningBoundary}>{card.boundary}</Text>
-    </View>
-  );
-}
+function LearningCard({ card }) { return <LearningArticle card={card} />; }
 
 export function CompanionMissionScreen({ now = new Date(), missingReflectionCount = 0, onOpenRecords, header, day, mission, profile, companionEvent, companionResponse, companionPresetId, onCompanionPreset, photoAvatarId, onRegisterPhotoAvatar, onRemovePhotoAvatar, careStartedOn, careMessages, careResponses, onCompleteCareMessage, companionSoundEnabled, onCompanionSoundEnabled, onCompanionResponse, note, onNote, difficulty, onDifficulty, emotion, onEmotion, eventResponse, eventOptions, onEventResponse, completedToday, onSaveMission, reminder, onConfigureReminder, onSaveReminderSchedule }) {
   const [activeTab, setActiveTab] = useState('care');

@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "runtimeEnabled": true,
+  "assets": [
+    {
+      "path": "app/assets/learning/v3/day-1-scene-1.png",
+      "sha256": "a5a2b338beec9e6da0440cee1474dbe856cd30bb60b07cdad126c832886b2cd8",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-1-scene-2.png",
+      "sha256": "cc7b587d194cb3cd81349aaaf6c5e69b3a2b9f1eea478093494d7c60a1adec25",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-1-scene-3.png",
+      "sha256": "e12f52426d99b596e98dfa9b3bd5172836a1c2ec1085a0988ac4e5ff721b3132",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-2-scene-1.png",
+      "sha256": "e2695d712323d264842c358cd157be30a6743d8bd125d0946b7fbcd8a0ba6feb",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-2-scene-2.png",
+      "sha256": "e922acfaf9f69102db64360a5cbd370777be596a72eb77f54901e308f5f7e759",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-2-scene-3.png",
+      "sha256": "93095b18465a554b59a5f8efdbe1dc702df1df72781e79e2dd1da60ea5f379bf",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-3-scene-1.png",
+      "sha256": "89bf1402cd1bf9f4f264d786a4ebcc058a5e7f49a73f2f9e5bc74e2801027610",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-3-scene-2.png",
+      "sha256": "418ea98877332bdb66ec215a88f29ebf34eb9a3060aca62422031f39e3d586a9",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-3-scene-3.png",
+      "sha256": "dbb39ce63fdd332aee134c3088b9a993a4b432ae3da0d2ebe86a9e49b4545931",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-4-scene-1.png",
+      "sha256": "b4b471d8aabe79561619df08f348c916798185f30bee80ccf340d713eef89241",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-4-scene-2.png",
+      "sha256": "c8e371b440d6f7f96495cbf68fceb950023244313dc78b0ba5fd1eedec82e2a4",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-4-scene-3.png",
+      "sha256": "d728b058e40dfca2adc9be08c81b486ed4856d7d1772cac73067679ff055f034",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-5-scene-1.png",
+      "sha256": "1b4b502d764444a736f3f68611134bf4a96f72a9520d16e77a4df1d371c2ab1c",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-5-scene-2.png",
+      "sha256": "cee5c3dd61de1a0e924665601b2745cba36758799dc3bd6b1a40400855da813a",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-5-scene-3.png",
+      "sha256": "226d89974846d3513165340fe2bd75d0d7494f93e57546b02dcdcbea24eab8ae",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-6-scene-1.png",
+      "sha256": "9160dda688440b8c75b475f6d8814db0bd5c116f8bfcf086c82ac8ffa34e6ee6",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-6-scene-2.png",
+      "sha256": "c1fabac7a27f709ae470888584f018223f78e54f36163538650577936f7bf76e",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-6-scene-3.png",
+      "sha256": "66f07a3883f97af67f6cb8cb1fa2d5ca94d9c386a2a1c7a35a2f7ceb2089ce60",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-7-scene-1.png",
+      "sha256": "69ced97c5a2b74c6c5501d268cecce2a2f2fa8ca1e7e7647279431bcd2db8851",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-7-scene-2.png",
+      "sha256": "d08ed5f6f5bfce4d9ee73987d80ef57eeb8d2449609ce5798b10a4bb184c9e45",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    },
+    {
+      "path": "app/assets/learning/v3/day-7-scene-3.png",
+      "sha256": "bca33366cdfb5355ea6b3416abc1d40bfabd596c9bf9048ee49c318d467abc9f",
+      "provenance": "AI-generated for this project with OpenAI imagegen; no external source image used.",
+      "reviewStatus": "source_context_reviewed"
+    }
+  ]
+}
