@@ -42,7 +42,7 @@ Changes affecting animal health or behavior claims, breed/personality framing, s
 
 ## Source and releases
 
-`e3o-labs/pet-readiness-simulator` is the canonical home for reviewed public code. The separate private operations repository remains responsible for release operations and evidence. A release record there must point to the exact public tag and commit SHA used to build it; code must not be independently edited in both repositories. This repository starts with a clean Git history and contains no private commits.
+App development and native release work take place in a separate private application repository. This public repository receives only explicitly approved, reviewed open-source changes through selective synchronization; it is not automatically synchronized with private app development. Release records remain private and identify the actual source used for each build. This repository starts with a clean Git history and contains no private commits or operational evidence.
 
 ## License
 
