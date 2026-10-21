@@ -40,7 +40,7 @@ export function HeaderGuideMenu() {
   </>;
 }
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: '#F5F1E9' },
+  safe: { flex: 1, width: '100%', maxWidth: 430, alignSelf: 'center', backgroundColor: '#F5F1E9' },
   top: { paddingHorizontal: 24, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 1, borderColor: '#DCD6CB' },
   link: { minHeight: 44, justifyContent: 'center', paddingVertical: 8 },
   linkText: { fontSize: 14, color: '#254236', fontWeight: '600' },
