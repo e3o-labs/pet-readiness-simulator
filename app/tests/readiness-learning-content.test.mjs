@@ -42,7 +42,7 @@ for (const card of READINESS_LEARNING_CARDS) {
 assert.equal(READINESS_LEARNING_RUNTIME_STATUS, 'source_reviewed');
 
 const missionSource = await readFile(new URL('../src/companion/CompanionMissionScreen.js', import.meta.url), 'utf8');
-for (const marker of ['배움', '오늘 알아둘 1가지', 'LearningArticle']) {
+for (const marker of ['배움', '오늘 알아둘 1가지', 'LearningHub']) {
   assert.ok(missionSource.includes(marker), `Learning UI scaffold marker missing: ${marker}`);
 }
 assert.ok(missionSource.includes('READINESS_LEARNING_RUNTIME_ENABLED'), 'Learning UI must be protected by the runtime evidence gate.');

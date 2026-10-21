@@ -26,6 +26,18 @@ export function LearningArticle({ card }) {
   </View>;
 }
 
+// Today and the complete library share one entry point in the learning tab.
+export function LearningHub({ card, onNavigate }) {
+  const [view, setView] = useState('today');
+  const selectView = (next) => { setView(next); onNavigate?.(); };
+  return <>
+    <View style={styles.viewSwitch}>
+      {[['today', '오늘의 배움'], ['all', '전체 7일 교육']].map(([id, label]) => <Pressable key={id} accessibilityRole="button" accessibilityState={{ selected: view === id }} onPress={() => selectView(id)} style={[styles.viewButton, view === id && styles.viewButtonSelected]}><Text style={[styles.viewButtonText, view === id && styles.viewButtonTextSelected]}>{label}</Text></Pressable>)}
+    </View>
+    {view === 'today' ? <LearningArticle key={card?.id} card={card} /> : <LearningLibrary onNavigate={onNavigate} />}
+  </>;
+}
+
 export function LearningLibrary({ onNavigate }) {
   const [selectedDay, setSelectedDay] = useState(null);
   const card = READINESS_LEARNING_CARDS.find(item => item.day === selectedDay);
@@ -36,5 +48,10 @@ export function LearningLibrary({ onNavigate }) {
   </>;
 }
 const styles = StyleSheet.create({
+  viewSwitch: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 12 },
+  viewButton: { minHeight: 44, justifyContent: 'center', borderWidth: 1, borderColor: '#486548', borderRadius: 22, paddingHorizontal: 18, paddingVertical: 10 },
+  viewButtonSelected: { backgroundColor: '#355844' },
+  viewButtonText: { color: '#355844', fontSize: 15, fontWeight: '700' },
+  viewButtonTextSelected: { color: '#FBF7ED' },
   meta: { color: '#617052', fontSize: 13, marginTop: 16 }, title: { color: '#20352C', fontSize: 26, lineHeight: 34, fontWeight: '700', marginTop: 12 }, summary: { color: '#254236', fontSize: 18, lineHeight: 27, marginVertical: 16 }, body: { color: '#526052', fontSize: 16, lineHeight: 26, marginTop: 8 }, label: { color: '#254236', fontSize: 17, lineHeight: 25, fontWeight: '700', marginTop: 14 }, panel: { marginTop: 24 }, note: { color: '#617052', fontSize: 14, lineHeight: 22, marginTop: 20 }, action: { backgroundColor: '#E2E9D6', borderRadius: 8, padding: 16, marginTop: 24 }, link: { minHeight: 44, justifyContent: 'center', paddingVertical: 12 }, linkText: { color: '#254236', fontSize: 15, lineHeight: 23, textDecorationLine: 'underline' }, card: { padding: 16, backgroundColor: '#FBF9F3', borderWidth: 1, borderColor: '#DCD6CB', borderRadius: 8, marginTop: 16 },
 });
