@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
-import { LearningLibrary } from '../learning/LearningContent';
 import { ONBOARDING_GUIDE_STEPS } from './guideSteps';
 
 const GUIDE_IMAGES = {
@@ -22,13 +21,12 @@ export function HeaderGuideMenu() {
   const close = () => setMenu(null);
   const guide = ONBOARDING_GUIDE_STEPS[step];
   return <>
-    <Pressable accessibilityRole="button" onPress={() => setMenu('education')} style={styles.link}><Text style={styles.linkText}>교육 콘텐츠</Text></Pressable>
     <Pressable accessibilityRole="button" onPress={() => { setStep(0); setMenu('onboarding'); }} style={styles.link}><Text style={styles.linkText}>사용법</Text></Pressable>
     <Modal visible={menu !== null} animationType="slide" onRequestClose={close} presentationStyle="pageSheet">
       <SafeAreaView style={styles.safe}>
-        <View style={styles.top}><Text style={styles.label}>{menu === 'education' ? '교육 콘텐츠' : '사용법'}</Text><Pressable accessibilityRole="button" accessibilityLabel="안내 닫기" style={styles.link} onPress={close}><Text style={styles.linkText}>닫기</Text></Pressable></View>
+        <View style={styles.top}><Text style={styles.label}>사용법</Text><Pressable accessibilityRole="button" accessibilityLabel="안내 닫기" style={styles.link} onPress={close}><Text style={styles.linkText}>닫기</Text></Pressable></View>
         <ScrollView ref={scrollRef} contentContainerStyle={styles.page}>
-          {menu === 'education' ? <LearningLibrary onNavigate={() => scrollRef.current?.scrollTo({ y: 0, animated: false })} /> : <>
+          <>
             <Text accessibilityLiveRegion="polite" style={styles.label}>{step + 1} / {ONBOARDING_GUIDE_STEPS.length}</Text>
             <Text accessibilityRole="header" style={styles.title}>{guide.title}</Text><Text style={styles.body}>{guide.body}</Text>
             <View style={styles.action}><Text style={styles.actionLabel}>이 화면에서 할 일</Text><Text style={styles.actionText}>{guide.action}</Text></View>
@@ -36,7 +34,7 @@ export function HeaderGuideMenu() {
             <Text style={styles.note}>다시 보기를 마쳐도 기존 돌봄 기록과 입력한 내용은 그대로 유지돼요.</Text>
             <Pressable accessibilityRole="button" style={styles.button} onPress={() => step < ONBOARDING_GUIDE_STEPS.length - 1 ? setStep(step + 1) : close()}><Text style={styles.buttonText}>{step < ONBOARDING_GUIDE_STEPS.length - 1 ? '다음' : '사용법 닫기'}</Text></Pressable>
             {step > 0 ? <Pressable accessibilityRole="button" style={styles.link} onPress={() => setStep(step - 1)}><Text style={styles.linkText}>이전</Text></Pressable> : null}
-          </>}
+          </>
         </ScrollView>
       </SafeAreaView>
     </Modal>

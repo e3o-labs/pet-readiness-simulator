@@ -1,5 +1,5 @@
-import { LearningArticle } from '../learning/LearningContent';
-import { useState } from 'react';
+import { LearningHub } from '../learning/LearningContent';
+import { useRef, useState } from 'react';
 import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { CompanionAppearanceSettings, CompanionEventPanel, CompanionHero } from './CompanionPanel';
 import { CareMessageInbox } from './CareMessageInbox';
@@ -12,10 +12,9 @@ function DayDots({ day }) {
   return <View style={styles.dots}>{[1, 2, 3, 4, 5, 6, 7].map((value) => <View key={value} style={[styles.dot, value < day && styles.dotDone, value === day && styles.dotCurrent]} />)}</View>;
 }
 
-function LearningCard({ card }) { return <LearningArticle card={card} />; }
-
 export function CompanionMissionScreen({ now = new Date(), missingReflectionCount = 0, onOpenRecords, header, day, mission, profile, companionEvent, companionResponse, companionPresetId, onCompanionPreset, photoAvatarId, onRegisterPhotoAvatar, onRemovePhotoAvatar, careStartedOn, careMessages, careResponses, onCompleteCareMessage, companionSoundEnabled, onCompanionSoundEnabled, onCompanionResponse, note, onNote, difficulty, onDifficulty, emotion, onEmotion, eventResponse, eventOptions, onEventResponse, completedToday, onSaveMission, reminder, onConfigureReminder, onSaveReminderSchedule }) {
   const [activeTab, setActiveTab] = useState('care');
+  const learningScrollRef = useRef(null);
   const careSummary = careDaySummary({ schema: 'dog-first.companion.v5', careStartedOn, careResponses }, day, now);
   const primaryDisabled = completedToday || !careSummary.readyForMission;
   const learningCard = learningCardForDay(day);
@@ -29,7 +28,7 @@ export function CompanionMissionScreen({ now = new Date(), missingReflectionCoun
       <View style={styles.tabs} accessibilityRole="tablist">
         {missionTabs.map(([id, label]) => <Pressable key={id} accessibilityRole="tab" accessibilityState={{ selected: activeTab === id }} onPress={() => setActiveTab(id)} style={[styles.tab, activeTab === id && styles.tabSelected]}><Text style={[styles.tabText, activeTab === id && styles.tabTextSelected]}>{label}</Text></Pressable>)}
       </View>
-      <ScrollView key={activeTab} contentContainerStyle={styles.page}>
+      <ScrollView ref={learningScrollRef} key={activeTab} contentContainerStyle={styles.page}>
         <View accessibilityLabel={`7일 중 ${day}일째`}>
           <View style={styles.dayRail}>
             <Text style={styles.eyebrow}>7일 중 {day}일</Text>
@@ -50,7 +49,7 @@ export function CompanionMissionScreen({ now = new Date(), missingReflectionCoun
         </> : null}
 
         {READINESS_LEARNING_RUNTIME_ENABLED && activeTab === 'learning' ? <>
-          <LearningCard card={learningCard} />
+          <LearningHub card={learningCard} onNavigate={() => learningScrollRef.current?.scrollTo({ y: 0, animated: false })} />
           <Pressable accessibilityRole="button" onPress={() => setActiveTab('reflection')} style={styles.skip}><Text style={styles.skipText}>오늘의 회고로 이동 →</Text></Pressable>
         </> : null}
 
