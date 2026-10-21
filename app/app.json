@@ -20,7 +20,8 @@
           "enableBackgroundRemoteNotifications": false
         }
       ],
-      "expo-audio"
+      "expo-audio",
+      "./plugins/with-ios-scene-lifecycle.cjs"
     ]
   }
 }
