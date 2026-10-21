@@ -1,10 +1,23 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [];
 const allowedMedia = new Set(['app/assets/audio/dog-bark-george-public-domain.mp3']);
+// Only these five reviewed application screenshots may cross the media boundary.
+const guideNames = ['01-intro', '02-conditions', '03-profiles', '04-care', '05-reflection'];
+const guideManifest = JSON.parse(await readFile(path.join(root, 'docs/usage-guide-assets.json'), 'utf8'));
+const expectedGuidePaths = new Set(guideNames.map(name => `app/assets/usage-guide/${name}.jpg`));
+if (guideManifest.assets.length !== expectedGuidePaths.size) failures.push('usage guide asset count differs from reviewed set');
+for (const asset of guideManifest.assets) {
+  if (!expectedGuidePaths.delete(asset.path)) { failures.push('unreviewed or duplicate usage guide path'); continue; }
+  const digest = createHash('sha256').update(await readFile(path.join(root, asset.path))).digest('hex');
+  if (digest !== asset.sha256) failures.push(asset.path + ': screenshot changed; renew capture review');
+  else allowedMedia.add(asset.path);
+}
+if (expectedGuidePaths.size) failures.push('reviewed usage guide screenshot missing');
 const forbiddenRoots = new Set(['.agent', '_workspace', 'data', 'deploy', 'plans', 'web']);
 const privateKeyHeader = ['-----BEGIN ', '(?:RSA |EC |OPENSSH |DSA )?', 'PRIVATE KEY-----'].join('');
 const certificateHeader = ['-----BEGIN ', 'CERTIFICATE-----'].join('');

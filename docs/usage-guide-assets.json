@@ -1,0 +1,29 @@
+{
+  "capture_date": "2026-10-21",
+  "source_commit": "c59dd84682b9da7323c663d21087d13c527ddd73",
+  "capture_changes": "header label shortened to 사용법 only; guide UI captures precede new visual guide",
+  "source": "Local web build of this public application; generated example choices, no user records",
+  "rights": "Screenshots of project-authored UI; existing project and dependency notices apply. No third-party photos or educational draft artwork.",
+  "assets": [
+    {
+      "path": "app/assets/usage-guide/01-intro.jpg",
+      "sha256": "19d94c02ac3d21c91364152fd620a7701e32db8bb42d9406826b0b70ec1b2cdd"
+    },
+    {
+      "path": "app/assets/usage-guide/02-conditions.jpg",
+      "sha256": "3388e809fcf4d58066998a718d8d4204eda9ee8daa10c49c8d65b5f1e87341d3"
+    },
+    {
+      "path": "app/assets/usage-guide/03-profiles.jpg",
+      "sha256": "f9e1f22eba6f42b4b94f46ecd6e28948e7cc4fa7c66554f6d21f2613cd911035"
+    },
+    {
+      "path": "app/assets/usage-guide/04-care.jpg",
+      "sha256": "4990202c60d7033566f39642e557d91697ab56a78453d3da0e8b0d5442a3e9c7"
+    },
+    {
+      "path": "app/assets/usage-guide/05-reflection.jpg",
+      "sha256": "1c6f298bfe849dd3d1a3dcfc52ab3ad98ef37f7cd2caf0b7456597105f04a5a4"
+    }
+  ]
+}

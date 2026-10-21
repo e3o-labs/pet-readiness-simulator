@@ -8,7 +8,7 @@ The root MIT License covers project-authored code and documentation only. It doe
 | --- | --- | --- |
 | `app/assets/audio/dog-bark-george-public-domain.mp3` | Public-domain dedication verified in the source register; attribution is not required and is retained voluntarily | Broadbeer, “George vuf 1996.ogg”, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:George_vuf_1996.ogg). Bundled MP3 SHA-256: `699b691884c647feabf561cba932fdbad820835c6e4b1ce38f2105e60c8fabcf`. |
 
-No other image, screenshot, or third-party media asset is bundled in this baseline.
+Five screenshots of this application’s own UI are bundled in `app/assets/usage-guide/` for the visual usage guide. They contain generated example choices, no real user records, and no third-party photographs. Capture provenance and exact hashes are recorded in [usage guide assets](docs/usage-guide-assets.json). Existing project and dependency notices apply; this does not relicense third-party components. No unreviewed educational illustrations are included.
 
 ## JavaScript dependencies
 
