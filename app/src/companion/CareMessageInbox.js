@@ -5,12 +5,12 @@ import { careWindowLabel, completedCareLabel } from './carePresentation';
 export function CareMessageInbox({ summary, onComplete }) {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const items = summary.items;
-  const allDone = summary.completedCount === items.length;
-  const statusLabel = (item) => item.status === 'completed' ? '완료' : item.status === 'missed' ? '놓침' : item.status === 'available' ? '지금' : '예정';
+  const allDone = summary.completedCount + (summary.notRequiredCount || 0) === items.length;
+  const statusLabel = (item) => item.status === 'not_required' ? '시작 전' : item.status === 'completed' ? '완료' : item.status === 'missed' ? '놓침' : item.status === 'available' ? '지금' : '예정';
   return (
     <View style={styles.inbox}>
       <Text style={styles.eyebrow}>오늘의 강아지 요청 · 오늘의 돌봄 순서</Text>
-      <View style={styles.heading}><Text style={styles.title}>오늘 루틴</Text><Text style={styles.count}>{summary.completedCount} 완료 · {summary.missedCount} 놓침</Text></View>
+      <View style={styles.heading}><Text style={styles.title}>오늘 루틴</Text><Text style={styles.count}>{summary.completedCount} 완료 · {summary.missedCount} 놓침{summary.notRequiredCount ? ` · ${summary.notRequiredCount} 시작 전` : ''}</Text></View>
       <Text style={styles.intro}>표시된 시간이 되어야 기록할 수 있어요. 아래에서 요청과 완료 가능 시간을 함께 확인해 주세요.</Text>
       {allDone ? <Text accessibilityLiveRegion="polite" style={styles.done}>오늘 요청을 모두 마쳤어요. 회고 탭에서 하루를 정리해 주세요.</Text> : null}
       {items.map(item => {
@@ -24,11 +24,12 @@ export function CareMessageInbox({ summary, onComplete }) {
           {(available || completed || detailsOpen) ? <Text style={styles.body}>{completed ? item.message.completedMessage : item.message.message}</Text> : null}
           {available ? <Pressable accessibilityRole="button" accessibilityLabel={item.message.actionLabel + ': ' + item.message.title} onPress={() => onComplete(item.message.id)} style={styles.action}><Text style={styles.actionText}>{item.message.actionLabel}</Text><Text style={styles.actionText}>→</Text></Pressable> : null}
           {completed ? <Text accessibilityLiveRegion="polite" style={styles.done}>{completedCareLabel(item.response)}</Text> : null}
+          {item.status === 'not_required' ? <Text style={styles.body}>체험 시작 전에 끝난 요청이에요. 완료나 놓침으로 세지 않고 점수에서도 제외해요.</Text> : null}
           {item.status === 'missed' ? <Text style={styles.missed}>놓친 돌봄 · 돌봄 지속성 조정 -2</Text> : null}
         </View>;
       })}
       <Pressable accessibilityRole="button" accessibilityState={{ expanded: detailsOpen }} onPress={() => setDetailsOpen(value => !value)} style={styles.toggle}><Text style={styles.toggleText}>{detailsOpen ? '루틴 설명 접기' : '루틴 설명 펼쳐보기'}</Text></Pressable>
-      {detailsOpen ? <Text style={styles.intro}>완료 가능 시간이 끝나면 놓침으로 기록됩니다. 놓친 요청은 돌봄 지속성에서 2점씩, 7일 합계 최대 30점까지 조정돼요. 완료한 시각은 각 요청에 남습니다.</Text> : null}
+      {detailsOpen ? <Text style={styles.intro}>체험 시작 전에 끝난 요청은 점수에서 제외해요. 체험을 시작한 뒤 완료 가능 시간이 끝나면 놓침으로 기록됩니다. 놓친 요청은 돌봄 지속성에서 2점씩, 7일 합계 최대 30점까지 조정돼요. 완료한 시각은 각 요청에 남습니다.</Text> : null}
     </View>
   );
 }

@@ -251,6 +251,10 @@ function canonicalCareResponses(storedResponses) {
   for (const message of CARE_MESSAGE_SCHEDULE) {
     const stored = storedResponses[message.id];
     if (!stored || typeof stored !== 'object') continue;
+    if (message.day === 1 && stored.status === 'not_required' && stored.reason === 'before_start') {
+      responses[message.id] = beforeStartCareResponse(message);
+      continue;
+    }
     if (stored.status === 'missed') {
       responses[message.id] = {
         status: 'missed',
@@ -384,9 +388,30 @@ export function startCareSchedule(state, now = new Date(), currentDay = 1) {
   const current = hydrateCompanionState(state);
   if (current.careStartedOn) return current;
   const boundedDay = Math.min(7, Math.max(1, Number(currentDay) || 1));
-  return {
+  const scheduled = {
     ...current,
     careStartedOn: localDateKey(addLocalDays(now, -(boundedDay - 1))),
+  };
+  // Only a new first-day schedule can exempt windows that ended before enrollment.
+  // Existing schedules and legacy records keep their original evidence.
+  if (boundedDay !== 1) return scheduled;
+  const careResponses = { ...scheduled.careResponses };
+  for (const message of careMessagesForDay(1)) {
+    if (!careResponses[message.id] && careWindow(scheduled, message).end <= now) {
+      careResponses[message.id] = beforeStartCareResponse(message);
+    }
+  }
+  return { ...scheduled, careResponses };
+}
+
+function beforeStartCareResponse(message) {
+  return {
+    status: 'not_required',
+    completed: false,
+    scheduledTime: message.time,
+    windowEndTime: careWindowEndTime(message),
+    reason: 'before_start',
+    evidenceLevel: 'EL-SYN-INTERACTION',
   };
 }
 
@@ -398,6 +423,9 @@ export function careMessageTiming(state, messageId, now = new Date()) {
   const { start, end, endTime } = careWindow(current, message);
   if (response?.completed === true) {
     return { status: 'completed', message, start, end, windowEndTime: endTime, response };
+  }
+  if (response?.status === 'not_required') {
+    return { status: 'not_required', message, start, end, windowEndTime: endTime, response };
   }
   if (response?.status === 'missed') {
     return { status: 'missed', message, start, end, windowEndTime: endTime, response };
@@ -474,9 +502,10 @@ export function careDaySummary(state, day, now = new Date()) {
     items,
     completedCount,
     missedCount,
+    notRequiredCount: count('not_required'),
     availableCount: count('available'),
     upcomingCount: count('upcoming'),
-    readyForMission: completedCount + missedCount === items.length,
+    readyForMission: completedCount + missedCount + count('not_required') === items.length,
   };
 }
 

@@ -67,6 +67,7 @@ function canonicalCareEvidence(storedResponses) {
   if (!storedResponses || typeof storedResponses !== 'object') return [];
   return CARE_MESSAGE_SCHEDULE.flatMap((message) => {
     const response = storedResponses[message.id];
+    if (message.day === 1 && response?.status === 'not_required' && response.reason === 'before_start' && response.completed === false) return [{ messageId: message.id, status: 'not_required' }];
     if (response?.status === 'missed') return [{ messageId: message.id, status: 'missed' }];
     if (response?.completed === true) return [{ messageId: message.id, status: 'completed' }];
     return [];
@@ -186,6 +187,7 @@ export function calculateReadiness(logs, profile, eventResponse, companionRespon
   const missionPenalty = (skipped + missing) * 4;
   const completedCareMessageCount = careEvidence.filter((item) => item.status === 'completed').length;
   const missedCareMessageCount = careEvidence.filter((item) => item.status === 'missed').length;
+  const notRequiredCareMessageCount = careEvidence.filter((item) => item.status === 'not_required').length;
   const careConsistencyPenalty = Math.min(
     CARE_MESSAGE_PENALTY_CAP,
     missedCareMessageCount * CARE_MESSAGE_MISSED_PENALTY,
@@ -216,6 +218,7 @@ export function calculateReadiness(logs, profile, eventResponse, companionRespon
     missingMissionCount: missing,
     completedCareMessageCount,
     missedCareMessageCount,
+    notRequiredCareMessageCount,
     careConsistencyPenalty,
     companionEvidenceCount: companionEvidence.length,
     categoryEvidenceCounts,

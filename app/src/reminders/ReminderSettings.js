@@ -7,6 +7,7 @@ export function ReminderSettings({ reminder, onToggle, onSave }) {
   const [draft, setDraft] = useState({ weekday: '', weekend: '' });
   const normalizedDraft = Object.fromEntries(Object.entries(draft).map(([key, value]) => [key, value.split(':').map((part) => part ? part.padStart(2, '0') : '').join(':')]));
   const valid = validReminderSchedule(reminder.schedule);
+  const webUnsupported = Platform.OS === 'web';
   const edit = () => { setDraft(reminder.schedule || { weekday: '', weekend: '' }); setOpen(true); };
   const status = reminder.status === 'schedule_error' ? '예약하지 못했어요. 다시 켜 주세요.'
     : reminder.status === 'permission_denied' ? '아이폰 설정에서 알림을 허용해 주세요.'
@@ -15,8 +16,8 @@ export function ReminderSettings({ reminder, onToggle, onSave }) {
     : '알림 꺼짐';
   return <View style={s.section}>
     <View style={s.row}>
-      <View style={s.copy}><Text style={s.title}>돌봄 알림</Text><Text style={s.body}>{valid ? status : '알림 받을 시간을 선택해 주세요.'}</Text></View>
-      <Switch accessibilityLabel="돌봄 알림" value={Boolean(reminder.optedIn)} disabled={!valid} onValueChange={onToggle} trackColor={{ true: '#486548' }} />
+      <View style={s.copy}><Text style={s.title}>돌봄 알림</Text><Text style={s.body}>{webUnsupported ? '웹에서는 기기 알림을 예약하지 않아요. 아이폰 앱에서 알림을 켜 주세요.' : valid ? status : '알림 받을 시간을 선택해 주세요.'}</Text></View>
+      <Switch accessibilityLabel="돌봄 알림" value={!webUnsupported && Boolean(reminder.optedIn)} disabled={webUnsupported || !valid} onValueChange={onToggle} trackColor={{ true: '#486548' }} />
     </View>
     {valid && <Text style={s.times}>평일 {reminder.schedule.weekday} · 주말 {reminder.schedule.weekend}</Text>}
     <Pressable accessibilityRole="button" onPress={edit} style={s.button}><Text style={s.buttonText}>{valid ? '시간 변경' : '시간 선택'}</Text></Pressable>
