@@ -21,6 +21,7 @@ let observedRequest;
 const delivered = await flushFeedbackQueue(queue, {
   endpoint: 'https://feedback.example.test/',
   apiKey: 'public-ingestion-token',
+  appId: 'pet-readiness',
   clock: fixedClock,
   fetchImpl: async (url, request) => {
     observedRequest = { url, request };
@@ -40,6 +41,7 @@ assert.deepEqual(delivered.queue, [second]);
 assert.deepEqual(delivered.receipts, [{ ...firstReceipt, accepted_at: '2026-07-11T09:00:00.000Z' }]);
 assert.equal(observedRequest.url, 'https://feedback.example.test/v1/feedback');
 assert.equal(observedRequest.request.headers['X-Feedback-API-Key'], 'public-ingestion-token');
+assert.equal(observedRequest.request.headers['X-Feedback-App-Id'], 'pet-readiness');
 assert.deepEqual(JSON.parse(observedRequest.request.body).items, queue);
 
 const serverError = await flushFeedbackQueue(queue, {
@@ -90,6 +92,7 @@ let observedDeletionRequest;
 const deletion = await requestFeedbackDeletion(firstReceipt, {
   endpoint: 'https://feedback.example.test/',
   apiKey: 'public-ingestion-token',
+  appId: 'pet-readiness',
   clock: fixedClock,
   fetchImpl: async (url, request) => {
     observedDeletionRequest = { url, request };
@@ -101,6 +104,7 @@ assert.equal(deletion.receipt.status, 'deletion_requested');
 assert.equal(deletion.receipt.deletion_requested_at, '2026-07-11T09:00:00.000Z');
 assert.equal(observedDeletionRequest.url, 'https://feedback.example.test/v1/feedback/FB-20260711-RECEIPT001/deletion-request');
 assert.equal(observedDeletionRequest.request.headers['X-Feedback-API-Key'], 'public-ingestion-token');
+assert.equal(observedDeletionRequest.request.headers['X-Feedback-App-Id'], 'pet-readiness');
 assert.deepEqual(JSON.parse(observedDeletionRequest.request.body), {
   client_submission_id: first.client_submission_id,
   deletion_token: firstReceipt.deletion_token,

@@ -26,11 +26,12 @@ import { CompanionMissionScreen } from './src/companion/CompanionMissionScreen';
 if (Platform.OS !== 'web') Notifications.setNotificationHandler({
   handleNotification: async () => ({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: false }),
 });
-const FEEDBACK_API_URL = normalizeFeedbackApiUrl(process.env.EXPO_PUBLIC_FEEDBACK_API_URL || '', {
+const FEEDBACK_API_URL = normalizeFeedbackApiUrl(process.env.EXPO_PUBLIC_FEEDBACK_API_URL ?? 'https://e3o-shared-feedback.redsunjin-5c0.workers.dev', {
   allowLocalHttp: process.env.EXPO_PUBLIC_FEEDBACK_ALLOW_LOCAL_HTTP === 'true',
 });
+const FEEDBACK_APP_ID = 'pet-readiness';
 const FEEDBACK_API_KEY = process.env.EXPO_PUBLIC_FEEDBACK_API_KEY || '';
-const FEEDBACK_PRIVACY_URL = normalizePrivacyNoticeUrl(process.env.EXPO_PUBLIC_FEEDBACK_PRIVACY_URL || '');
+const FEEDBACK_PRIVACY_URL = normalizePrivacyNoticeUrl(process.env.EXPO_PUBLIC_FEEDBACK_PRIVACY_URL ?? 'https://e3o-shared-feedback.redsunjin-5c0.workers.dev/privacy');
 const FEEDBACK_AVAILABLE = Boolean(FEEDBACK_API_URL && FEEDBACK_PRIVACY_URL);
 const FEEDBACK_CATEGORIES = [["bug", '불편 신고'], ["confusion", '이해하기 어려움'], ["feature", '기능 제안'], ["safety_privacy", '안전·개인정보'], ["other", '기타']];
 const PUBLIC_SCREENS = new Set(['welcome', 'service_intro', 'service_feedback', 'service_feedback_export', 'service_feedback_receipts', 'onboarding', 'profiles', 'feed', 'report', 'mission']);
@@ -145,7 +146,7 @@ export default function App() {
   const [serviceFeedbackMessage, setServiceFeedbackMessage] = useState('');
   const [serviceFeedbackSourceScreen, setServiceFeedbackSourceScreen] = useState('unknown');
   const feedbackDelivery = useMemo(() => createFeedbackDeliveryCoordinator({
-    flush: (queue) => flushFeedbackQueue(queue, { endpoint: FEEDBACK_AVAILABLE ? FEEDBACK_API_URL : '', apiKey: FEEDBACK_API_KEY }),
+    flush: (queue) => flushFeedbackQueue(queue, { endpoint: FEEDBACK_AVAILABLE ? FEEDBACK_API_URL : '', apiKey: FEEDBACK_API_KEY, appId: FEEDBACK_APP_ID }),
     onResult: (result) => {
       if (!result.acceptedClientSubmissionIds.length) return;
       const accepted = new Set(result.acceptedClientSubmissionIds);
@@ -339,7 +340,7 @@ export default function App() {
     ]);
   }
   async function submitFeedbackDeletion(receipt) {
-    const result = await requestFeedbackDeletion(receipt, { endpoint: FEEDBACK_API_URL, apiKey: FEEDBACK_API_KEY });
+    const result = await requestFeedbackDeletion(receipt, { endpoint: FEEDBACK_API_URL, apiKey: FEEDBACK_API_KEY, appId: FEEDBACK_APP_ID });
     if (['requested', 'deleted'].includes(result.status)) {
       setState((current) => ({ ...current, serviceFeedbackReceipts: mergeFeedbackReceipts(current.serviceFeedbackReceipts, [result.receipt]) }));
       Alert.alert(
@@ -351,7 +352,7 @@ export default function App() {
     Alert.alert('삭제 요청을 보내지 못했어요', '네트워크 연결을 확인한 뒤 다시 시도해 주세요.');
   }
   async function refreshFeedbackDeletion(receipt) {
-    const result = await refreshFeedbackDeletionStatus(receipt, { endpoint: FEEDBACK_API_URL, apiKey: FEEDBACK_API_KEY });
+    const result = await refreshFeedbackDeletionStatus(receipt, { endpoint: FEEDBACK_API_URL, apiKey: FEEDBACK_API_KEY, appId: FEEDBACK_APP_ID });
     if (['pending', 'deleted'].includes(result.status)) {
       setState((current) => ({ ...current, serviceFeedbackReceipts: mergeFeedbackReceipts(current.serviceFeedbackReceipts, [result.receipt]) }));
       Alert.alert(

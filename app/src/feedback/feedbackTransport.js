@@ -10,6 +10,7 @@ export async function flushFeedbackQueue(queue, options = {}) {
   try {
     const headers = { 'Content-Type': 'application/json' };
     if (options.apiKey) headers['X-Feedback-API-Key'] = options.apiKey;
+    if (options.appId) headers['X-Feedback-App-Id'] = options.appId;
     const response = await fetchImpl(endpoint + '/v1/feedback', {
       method: 'POST',
       headers,
@@ -100,6 +101,7 @@ async function sendFeedbackDeletionRequest(receipt, options = {}, statusWhenPend
   try {
     const headers = { 'Content-Type': 'application/json' };
     if (options.apiKey) headers['X-Feedback-API-Key'] = options.apiKey;
+    if (options.appId) headers['X-Feedback-App-Id'] = options.appId;
     const response = await fetchImpl(
       endpoint + '/v1/feedback/' + encodeURIComponent(receipt.feedback_id) + '/deletion-request',
       {
